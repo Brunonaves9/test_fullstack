@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EletrodomesticoController;
+use App\Http\Controllers\MarcaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('/marcas', [MarcaController::class, 'get_marcas'])->name('marcas.get_marca');
+
+Route::controller(EletrodomesticoController::class)->group(function () {
+    Route::post('/eletrodomestico/salvar', 'store');
+    Route::get('/eletrodomestico/', 'index');
+    Route::get('/eletrodomestico/view/{id}', 'show');
+    Route::get('/eletrodomestico/edit/{id}', 'edit');
+    Route::post('/eletrodomestico/update/', 'update');
+    Route::post('/eletrodomestico/delete/', 'delete');
+    Route::post('/eletrodomestico/search/', 'busca');
 });
