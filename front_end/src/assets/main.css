@@ -1,0 +1,36 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
+  
+nav {
+  background-color: rgb(64, 99, 175);
+  padding: 30px;
+}
+  
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+  
+nav a.router-link-exact-active {
+    color: #42b983;
+}
+
+
+.lista_ver {
+  list-style: none;
+}
+
+.lista_ver li {
+  padding: 10px;
+  border: solid 1px rgba(0,0,0,0.3);
+
+}
+
+button a {
+  text-decoration: none;
+  color: #fff;
+}
