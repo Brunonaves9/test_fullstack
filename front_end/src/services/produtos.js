@@ -10,24 +10,24 @@ export default {
         return http.get('eletrodomestico/view/'+id)
     },
 
-    create: () => {
-
-    },
-
     insert: (produto) => {
         return http.post('eletrodomestico/salvar', produto)
     },
 
-    editar: () => {
-
+    editar: (id) => {
+        return http.get('eletrodomestico/edit/'+id)
     },
 
-    update: () => {
-
+    update: (produto) => {
+        return http.post('eletrodomestico/update', produto)
     },
 
     listarMarcas: () => {
         return http.get('marcas')
+    },
+
+    deletar: (id) => {
+        return http.post('eletrodomestico/delete', id)
     }
 
 }

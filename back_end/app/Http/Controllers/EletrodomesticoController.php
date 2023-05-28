@@ -21,11 +21,7 @@ class EletrodomesticoController extends Controller
      */
     public function index()
     {
-
-        $number_registers = 20;
-
-        return $this->eletrodomestico->paginate($number_registers);
-
+        return $this->eletrodomestico->get();
     }
 
     /**

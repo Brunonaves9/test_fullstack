@@ -36,7 +36,7 @@ class EletrodomesticoService {
         } catch (Exception $e) {
             return response()->json([
                 'status'   => FALSE,
-                'mensagem' => 'Erro ao ao buscar registros, contate o suporte.',
+                'mensagem' => $e->getMessage(),
                 'dados'    => NULL
             ]);
         }

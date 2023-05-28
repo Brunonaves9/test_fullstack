@@ -1,7 +1,8 @@
 <template>
     <div class="container">
+        <h3 class="titulo">Cadastrar Produtos</h3>
         <form @submit.prevent="salvar">
-            <div class="row">
+            <div class="row margin_bottom">
                 <div class="col-sm-4">
                     <label>Marca</label>
                     <select class="form-control" id="marca" v-model="produto.marca_id">
@@ -22,15 +23,15 @@
                     </select>
                 </div>                
             </div>
-            <div class="row">
+            <div class="row margin_bottom">
                 <div class="col">
                     <label>Descrição</label>
                     <input type="text" class="form-control" id="descricao" v-model="produto.descricao">
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <button type="submit" id="salvar" class="btn btn-success">Salvar</button>
+                <div class="col btn_center">
+                    <button type="submit" id="salvar" class="btn btn-success salvar">Salvar</button>
                 </div>
             </div>
         </form>

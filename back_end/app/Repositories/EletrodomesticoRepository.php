@@ -16,17 +16,29 @@ class EletrodomesticoRepository implements Contract {
 
     public function get_all()
     {
-        return $this->eletro->get();        
+        $query = $this->eletro->select('eletrodomesticos.*', 'marcas.nome_marca')
+        ->join('marcas', 'marcas.id', '=', 'eletrodomesticos.marca_id');
+
+        return $query->get();      
     }
 
     public function paginate($num_registers)
     {
-        return $this->eletro->paginate($num_registers);
+        $query = $this->eletro->select('eletrodomesticos.*', 'marcas.nome_marca')
+        ->join('marcas', 'marcas.id', '=', 'eletrodomesticos.marca_id')
+        ->paginate($num_registers);
+
+        return $query;
     }
 
     public function find($id)
     {
-        return $this->eletro->find($id);
+
+        $query = $this->eletro->select('eletrodomesticos.*', 'marcas.nome_marca')
+        ->join('marcas', 'marcas.id', '=', 'eletrodomesticos.marca_id');
+
+        return $query->find($id); 
+        return $query;
     }
 
     public function insert($dados)
