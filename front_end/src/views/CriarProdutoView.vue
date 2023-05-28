@@ -5,18 +5,18 @@
             <div class="row margin_bottom">
                 <div class="col-sm-4">
                     <label>Marca</label>
-                    <select class="form-control" id="marca" v-model="produto.marca_id">
+                    <select class="form-control" id="marca" v-model="produto.marca_id" required>
                         <option value="">Selecione</option>
                         <option v-for="marca in marcas" :key="marca.id" :value="marca.id">{{ marca.nome_marca }}</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
                     <label>Produto</label>
-                    <input type="text" id="nome_produto" class="form-control" v-model="produto.nome">
+                    <input type="text" id="nome_produto" class="form-control" v-model="produto.nome" required>
                 </div>                
                 <div class="col-sm-4">
                     <label>Tensão</label>
-                    <select class="form-control" id="tensao" v-model="produto.tensao">
+                    <select class="form-control" id="tensao" v-model="produto.tensao" required>
                         <option value="">Selecione</option>
                         <option value="110V">110V</option>
                         <option value="220V">220V</option>
@@ -75,11 +75,29 @@ export default {
                     });                   
                     
                 } else {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Erro',
-                        text: response.data.mensagem
-                    }); 
+                    if (response.data.validate == true) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast'
+                            },
+                            showConfirmButton: false,
+                            timer: 3500,
+                            timerProgressBar: true
+                        })
+                        Toast.fire({
+                        icon: 'error',
+                        title: response.data.mensagem,
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Erro',
+                            text: JSON.stringfy(response.data.mensagem)
+                        }); 
+                    }
                 }
             })
         }

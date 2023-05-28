@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EletrodomesticoRequest;
 use Illuminate\Http\Request;
 use App\Services\EletrodomesticoService;
 
@@ -36,15 +37,10 @@ class EletrodomesticoController extends Controller
     /**
      * Realiza a inserção de um novo eletrodoméstico
      */
-    public function store(Request $request)
+    public function store(EletrodomesticoRequest $request)
     {
-
-        $request->validate([
-            'nome'      => 'required',
-            'descricao' => 'required',
-            'tensao'    => 'required',
-            'marca_id'  => 'required'
-        ]);
+        
+        $validade = $request->validated();
 
         $this->data = (object) [
             'nome'      => $request->nome,
@@ -68,14 +64,9 @@ class EletrodomesticoController extends Controller
     /**
      * Realiza a alteração do eletrodomestico
      */
-    public function update(Request $request)
+    public function update(EletrodomesticoRequest $request)
     {
-        $request->validate([
-            'nome'      => 'required',
-            'descricao' => 'required',
-            'tensao'    => 'required',
-            'marca_id'  => 'required'
-        ]);
+        $validade = $request->validated();
 
         $this->data = (object) [
             'nome'      => $request->nome,
